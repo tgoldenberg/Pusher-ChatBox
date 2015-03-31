@@ -1,7 +1,5 @@
 = Realtime Chat with Pusher 
 
-- This app was an experiment to replicate a Facebook / Google chat application. The chatboxes were stylized based on this tutorial - h[css tricks]
-- 
-
-
-[css tricks]:https://css-tricks.com/replicating-google-hangouts-chat/
+- This app was an experiment to replicate a Facebook / Google chat application. The chatboxes were stylized based on this tutorial - https://css-tricks.com/replicating-google-hangouts-chat/
+- gems used are devise, twitter-bootstrap-rails, pusher, and simple_form
+- feel free to fork and make changes and suggest improvements. 
