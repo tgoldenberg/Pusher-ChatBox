@@ -19,6 +19,8 @@ class MessagesController < ApplicationController
     json = @message.body.to_s
     @message.save
     redirect_to @message
+    channel = 'private-conversation.' + @message.recipient_id
+    Pusher.trigger(channel, 'new_message', {:from => current_user.username, :message => @message.body, :conversation_id => @message.conversation_id, :create_time => @message.created_at})
   end
 
   private

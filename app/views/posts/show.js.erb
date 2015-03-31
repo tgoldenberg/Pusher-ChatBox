@@ -1,1 +1,2 @@
 $('tbody').prepend('<tr><td class="post-content"><%= @post.body %></td><td class="message-sm"><%= @post.created_at.strftime("%d %b. %Y, %H:%M") %></td><td class="message-sm"><%= User.find(@post.user_id).username %></td></tr>');
+$('.body-text').val("");

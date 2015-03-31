@@ -10,7 +10,7 @@
       <li class="drop-links"> <%= link_to 'you received a message from ' + User.find(msg.sender_id).username, conversation_path(msg.conversation_id), remote: true %></li>
         <% end %>
         <% else  %>
-      <li class="drop-links"><p style="margin-right:20px;">No new messages</p></li>
+      <li class="drop-links"><p id="no-messages" style="margin-right:20px;">No new messages</p></li>
       <% end %>
     </ul>
   </li>
@@ -58,11 +58,11 @@
       </tbody>
     </table>
 
-
+<% if user_signed_in? %>
   <div class="container input-box">
     <%= form_for @post, remote: true do |f| %>
     <div class="field">
-      <%= f.text_area :body, :class => 'text-field', placeholder: 'type a message here' %>
+      <%= f.text_area :body, :class => 'text-field body-text', placeholder: 'type a message here' %>
     </div>
     <div class="actions">
       <%= f.submit 'Send', :class => 'btn btn-primary post-submit' %>
@@ -71,6 +71,7 @@
     <% end %>
   </div>
   </div>
+  <% end %>
 
 <% if user_signed_in? %>
 <% if @messages.any?%>
@@ -195,4 +196,29 @@
     //recalculate when window is loaded and also when window is resized.
     window.addEventListener("resize", calculate_popups);
     window.addEventListener("load", calculate_popups);
+</script>
+
+<script>
+$(function() {
+  var pusher = new Pusher('42b5fd3755f8e9edc491');
+  var channelName = 'private-conversation.' + '<%= current_user ? current_user.id.to_s : 'null' %>';
+  var channel = pusher.subscribe(channelName);
+
+  channel.bind('new_message', function(data) {
+    console.log(data.conversation_id)
+    console.log(data.message)
+    console.log(data.from)
+    console.log(data.create_time)
+  if ($('#' + data.conversation_id).css('display') === 'block') {
+    $('#' + data.conversation_id).children('.popup-messages').children('.message-content').append('<div class="message-wrapper"><div class="left"></div><p class="message-text">' + data.message + '</p></div>');
+    $('#' + data.conversation_id).children('.popup-messages').children('.message-content').scrollTop($('#' + data.conversation_id).children('.popup-messages').children('.message-content').prop("scrollHeight") - 210);
+  }
+  else {
+    // make icon pulse and prepend link //
+    $('.glyphicon').addClass('pulsit');
+    $('.dropdown-menu').append('<li class="drop-links"><a data-remote="true" href="/conversations/" + ' + data.conversation_id + '>you received a message from ' + data.from + '</a></li>');
+  }
+  });
+})
+
 </script>
