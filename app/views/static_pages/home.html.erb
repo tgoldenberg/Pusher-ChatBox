@@ -10,7 +10,7 @@
       <li class="drop-links"> <%= link_to 'you received a message from ' + User.find(msg.sender_id).username, conversation_path(msg.conversation_id), remote: true %></li>
         <% end %>
         <% else  %>
-      <li class="drop-links"> No new messages</li>
+      <li class="drop-links"><p style="margin-right:20px;">No new messages</p></li>
       <% end %>
     </ul>
   </li>
@@ -43,6 +43,34 @@
   <p>or example2@gmail.com and password: password.</p>
   <p>Leave comments or questions below, and enjoy!</p>
 </div>
+
+
+
+    <table class="table table-striped table-bordered">
+      <tbody>
+        <% @posts.each do |post| %>
+        <tr>
+          <td class="post-content"><%= post.body %></td>
+          <td class="message-sm"> <%= post.created_at.strftime("%d %b. %Y, %H:%M") %></td>
+          <td class="message-sm"> <%= post.user.username %></td>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
+
+
+  <div class="container input-box">
+    <%= form_for @post, remote: true do |f| %>
+    <div class="field">
+      <%= f.text_area :body, :class => 'text-field', placeholder: 'type a message here' %>
+    </div>
+    <div class="actions">
+      <%= f.submit 'Send', :class => 'btn btn-primary post-submit' %>
+    </div>
+    <%= f.hidden_field :user_id, :value => current_user.id %>
+    <% end %>
+  </div>
+  </div>
 
 <% if user_signed_in? %>
 <% if @messages.any?%>

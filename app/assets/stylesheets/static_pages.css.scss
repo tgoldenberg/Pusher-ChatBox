@@ -72,6 +72,8 @@ nav ul .drop-links {
   background: #CCC;
   box-shadow: 10px 5px 10px #BBB;
   border: 0px;
+  padding-bottom: 40px;
+  margin-bottom: 20px;
 }
  .chat-sidebar
  {
@@ -82,8 +84,9 @@ nav ul .drop-links {
      top: 0px;
      padding-top: 10px;
      padding-bottom: 10px;
-     border: 1px solid rgba(29, 49, 91, .3);
+     border: 2px solid #AAA;
      margin-top: 50px;
+     background: #AAA;
  }
 
  .sidebar-name
@@ -95,7 +98,7 @@ nav ul .drop-links {
  }
 
  .sidebar-name:hover {
-   background: #DDD;
+   background: #BBB;
  }
 
 .popup-box {
@@ -241,3 +244,23 @@ img {
  .form-control {
    width: 300px;
  }
+
+ .table-striped {
+   max-width: 600px;
+   margin-left: 150px;
+ }
+ .input-box {
+   margin-left: 290px;
+ }
+.post-submit {
+  width: 290px;
+  margin-left: 5px;
+}
+ .message-sm {
+   font-size: 12px;
+ }
+
+
+.post-content {
+  height: 30px;
+}
