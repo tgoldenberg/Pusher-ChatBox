@@ -216,7 +216,7 @@ $(function() {
   else {
     // make icon pulse and prepend link //
     $('.glyphicon').addClass('pulsit');
-    $('.dropdown-menu').append('<li class="drop-links"><a data-remote="true" href="/conversations/" + ' + data.conversation_id + '>you received a message from ' + data.from + '</a></li>');
+    $('.dropdown-menu').append('<li class="drop-links"><a data-remote="true" href="/conversations/' + data.conversation_id + '">you received a message from ' + data.from + '</a></li>');
   }
   });
 })
