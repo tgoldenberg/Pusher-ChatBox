@@ -1,2 +1,3 @@
 $('#<%= @message.conversation.id %>').children('.popup-messages').children('.message-content').append('<img src="/assets/profile.png"><p class="message-text"><%= @message.body %></p>');
 $('#<%= @message.conversation.id %>').children('.popup-messages').children('form').children('.text-field').val("");
+$('#<%= @message.conversation.id %>').children('.popup-messages').children('.message-content').scrollTop($('#<%= @message.conversation.id %>').children('.popup-messages').children('.message-content').prop("scrollHeight") - 210); 

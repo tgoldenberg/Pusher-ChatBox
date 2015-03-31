@@ -13,4 +13,5 @@ $('#<%= @conversation.id %>').children('.popup-messages').append('<%= escape_jav
 <% @messages.reverse.each do |msg| %>
 $('#<%= @conversation.id %>').children('.popup-messages').children('.message-content').append('<img src="/assets/profile.png"><p><%= msg.body %></p>');
 <% end %>
+$('#<%= @conversation.id %>').children('.popup-messages').children('.message-content').scrollTop($('#<%= @conversation.id %>').children('.popup-messages').children('.message-content').prop("scrollHeight") - 210);
 }
