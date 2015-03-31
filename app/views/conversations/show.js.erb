@@ -1,0 +1,16 @@
+
+
+register_popup('<%= @conversation.id %>', '<%= @conversation.recipient.username %>');
+<% if current_user.id == @conversation.recipient_id %>
+$('#<%= @conversation.id %>').children('.popup-head').children('.popup-head-left').html('<%= @conversation.sender.username %>');
+<% end %>
+
+if ($('#<%= @conversation.id %>').children('.popup-messages').children('.message-content').length == 0) {
+$('#<%= @conversation.id %>').children('.popup-messages').append('<div class="message-content"></div>');
+$('#<%= @conversation.id %>').children('.popup-messages').append('<%= escape_javascript(render 'form')%>');
+
+
+<% @messages.reverse.each do |msg| %>
+$('#<%= @conversation.id %>').children('.popup-messages').children('.message-content').append('<img src="/assets/profile.png"><p><%= msg.body %></p>');
+<% end %>
+}

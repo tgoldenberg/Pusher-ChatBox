@@ -1,0 +1,146 @@
+/*
+  Place all the styles related to the matching controller here.
+  They will automatically be included in application.css.
+*/
+
+ li {
+   list-style-type: none;
+ }
+nav {
+  min-height: 50px;
+  background: black;
+  width: 100%;
+}
+
+.glyphicon-globe {
+  margin-top: 4px;
+  margin-left: 50px;
+  font-size: 30px;
+}
+
+nav ul {
+  float: right;
+  margin-right: 15px;
+}
+nav ul li {
+  display: inline;
+  padding-right: 15px;
+}
+
+nav ul .drop-links {
+  display: block;
+  padding-right: 0px;
+}
+
+@media only screen and (max-width : 540px)
+ {
+     .chat-sidebar
+     {
+         display: none !important;
+     }
+
+     .chat-popup
+     {
+         display: none !important;
+     }
+ }
+
+ body
+ {
+     background-color: #e9eaed;
+ }
+
+ .chat-sidebar
+ {
+     width: 200px;
+     position: fixed;
+     height: 100%;
+     right: 0px;
+     top: 0px;
+     padding-top: 10px;
+     padding-bottom: 10px;
+     border: 1px solid rgba(29, 49, 91, .3);
+     margin-top: 50px;
+ }
+
+ .sidebar-name
+ {
+     padding-left: 10px;
+     padding-right: 10px;
+     margin-bottom: 4px;
+     font-size: 12px;
+ }
+
+.popup-box {
+  display: none;
+  position: fixed;
+  bottom: 0px;
+  right: 220px;
+  height: 285px;
+  background-color: white;
+  width: 300px;
+  border: 1px solid #AAA;
+}
+
+.popup-box .popup-head {
+  background-color: blue;
+  color: white;
+  padding: 5px;
+  font-weight: bold;
+  font-size: 14px;
+}
+
+.popup-box .popup-head .popup-head-left {
+  float:left;
+}
+.popup-box .popup-head .popup-head-right {
+  float: right;
+}
+.popup-box .popup-head .popup-head-right a {
+  text-decoration: none;
+  color: white;
+}
+
+.popup-box .popup-messages {
+  height: 100%;
+/*   overflow-y: scroll; */
+  background: white;
+  color: black;
+}
+
+.text-field {
+  width: 290px;
+  height: 35px;
+  margin: 0;
+  margin-left:4px;
+  bottom: 0px;
+}
+
+.send {
+  display: none;
+}
+
+.message-content {
+  height: 210px;
+  background: #EEE;
+  width: flex;
+  overflow-y: scroll;
+}
+
+.message-text {
+  width: 270px;
+}
+img {
+  width: 30px;
+  height: 30px;
+}
+
+.pulsit {
+  animation: pulse linear 1s infinite;
+  -webkit-animation: pulse linear 1s infinite;
+}
+@-webkit-keyframes pulse {
+  0% { color: #0000CC;}
+  50% { color: #006666;}
+  100% { color: #0000CC;}
+}

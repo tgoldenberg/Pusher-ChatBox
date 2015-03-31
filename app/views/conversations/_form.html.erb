@@ -1,0 +1,15 @@
+
+<%= simple_form_for(@message, remote: true) do |f| %>
+<%= f.hidden_field :sender_id, :value => current_user.id %>
+
+<% if current_user == @conversation.sender %>
+<%= f.hidden_field :recipient_id, :value => @conversation.recipient.id %>
+<% elsif current_user == @conversation.recipient %>
+<%= f.hidden_field :recipient_id, :value => @conversation.sender.id %>
+<% end %>
+
+<%= f.hidden_field :conversation_id, :value => @conversation.id %>
+
+<input type="text" <%= f.input_field :body, autofocus: true, :class => 'text-field' %>
+<%= f.button :submit, :label => 'send', :class => 'btn btn-primary send' %>
+<% end %>
