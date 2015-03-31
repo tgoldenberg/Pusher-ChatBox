@@ -27,6 +27,15 @@ nav ul li {
   padding-right: 15px;
 }
 
+nav li {
+  display: inline;
+  padding-right: 15px;
+  float: right;
+  margin-left: 15px;
+  margin-top: 10px;
+  text-decoration: none;
+}
+
 nav ul .drop-links {
   display: block;
   padding-right: 0px;
@@ -50,6 +59,20 @@ nav ul .drop-links {
      background-color: #e9eaed;
  }
 
+.username {
+  display: inline-block;
+  width: 70px;
+  font-size: 15px;
+}
+
+.well {
+  border-radius: 15px;
+  margin-top: 20px;
+  margin-left: 50px;
+  background: #CCC;
+  box-shadow: 10px 5px 10px #BBB;
+  border: 0px;
+}
  .chat-sidebar
  {
      width: 200px;
@@ -69,6 +92,10 @@ nav ul .drop-links {
      padding-right: 10px;
      margin-bottom: 4px;
      font-size: 12px;
+ }
+
+ .sidebar-name:hover {
+   background: #DDD;
  }
 
 .popup-box {
@@ -209,4 +236,8 @@ img {
    position: absolute;
    border-left: 5px solid white;
    border-bottom: 5px solid transparent;
+ }
+
+ .form-control {
+   width: 300px;
  }

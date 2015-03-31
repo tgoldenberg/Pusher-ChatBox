@@ -29,13 +29,21 @@
 <div class="chat-sidebar">
   <% @users.each do |user| %>
   <div class="sidebar-name">
-    <th> <%= user.username %></th>
+    <td><p class="username"> <%= user.username %></p></td>
     <% if user_signed_in? %>
-    <th> <%= link_to 'Message', new_conversation_path(:recipient_id => user.id, :sender_id => current_user.id), remote: true, :class => 'btn btn-success' %></th>
+    <td> <%= link_to 'Message', new_conversation_path(:recipient_id => user.id, :sender_id => current_user.id), remote: true, :class => 'btn btn-primary' %></td>
     <% end %>
   </div>
   <% end %>
 </div>
+
+<div class="well container col-md-8">
+  <h1>Directions</h1>
+  <p>Log in as email: example@gmail.com and password: password, </p>
+  <p>or example2@gmail.com and password: password.</p>
+  <p>Leave comments or questions below, and enjoy!</p>
+</div>
+
 <% if user_signed_in? %>
 <% if @messages.any?%>
 <script>
@@ -43,6 +51,9 @@
 </script>
 <% end %>
 <% end %>
+
+
+
 
 <script>
     //this function can remove a array element.
@@ -157,4 +168,3 @@
     window.addEventListener("resize", calculate_popups);
     window.addEventListener("load", calculate_popups);
 </script>
-<script>
