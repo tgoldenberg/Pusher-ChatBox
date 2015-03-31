@@ -80,6 +80,7 @@ nav ul .drop-links {
   background-color: white;
   width: 300px;
   border: 1px solid #AAA;
+  box-shadow: 10px 10px 5px #AAA;
 }
 
 .popup-box .popup-head {
@@ -127,8 +128,21 @@ nav ul .drop-links {
   overflow-y: scroll;
 }
 
+
 .message-text {
-  width: 270px;
+  width: 180px;
+  background: white;
+  border-radius: 4px;
+  min-height: 60px;
+  margin-left: 0px;
+  margin-right: 0px;
+  display: inline-block;
+  min-width: 100px;
+  max-width: 168px;
+  text-indent: 10px;
+  border-top-left-radius:0px;
+  border-top-right-radius:0px;
+
 }
 img {
   width: 30px;
@@ -144,3 +158,55 @@ img {
   50% { color: #006666;}
   100% { color: #0000CC;}
 }
+
+.left {
+  background: image-url("profile.png");
+  background-size: cover;
+  width: 45px;
+  height: 45px;
+  float: left;
+  display: inline-block;
+  position: relative;
+  margin-left: 0px;
+  border-radius: 0px;
+}
+
+.message-wrapper {
+  min-height: 50px;
+   width: 230px;
+   margin-left: 10px;
+   margin-bottom: 18px;
+   border-radius: 4px;
+   display: flex;
+}
+
+.left:before {
+  content: "";
+  height: 0;
+  width: 100%;
+  position: absolute;
+  border-right: 5px solid white;
+  border-bottom: 5px solid transparent;
+}
+
+.right {
+   background-image: image-url("profile.png");
+   background-size: cover;
+   width: 75px;
+   height: 45px;
+   float: right;
+   background-color: white;
+   display: inline-block;
+   position: relative;
+   margin: 0;
+   border-radius: 0px;
+ }
+
+ .right:before {
+   content: "";
+   height: 0;
+   width: 0;
+   position: absolute;
+   border-left: 5px solid white;
+   border-bottom: 5px solid transparent;
+ }

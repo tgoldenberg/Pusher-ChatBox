@@ -5,13 +5,35 @@ register_popup('<%= @conversation.id %>', '<%= @conversation.recipient.username 
 $('#<%= @conversation.id %>').children('.popup-head').children('.popup-head-left').html('<%= @conversation.sender.username %>');
 <% end %>
 
-if ($('#<%= @conversation.id %>').children('.popup-messages').children('.message-content').length == 0) {
+
+
+if ($('#<%= @conversation.id %>').children('.popup-messages').children('.message-content').length == 0 ) {
 $('#<%= @conversation.id %>').children('.popup-messages').append('<div class="message-content"></div>');
 $('#<%= @conversation.id %>').children('.popup-messages').append('<%= escape_javascript(render 'form')%>');
 
-
 <% @messages.reverse.each do |msg| %>
-$('#<%= @conversation.id %>').children('.popup-messages').children('.message-content').append('<img src="/assets/profile.png"><p><%= msg.body %></p>');
+<% if current_user.id != msg.sender_id %>
+$('#<%= @conversation.id %>').children('.popup-messages').children('.message-content').append('<div class="message-wrapper"><div class="left"></div><p class="message-text"><%= msg.body %></p></div>');
+<% else %>
+$('#<%= @conversation.id %>').children('.popup-messages').children('.message-content').append('<div class="message-wrapper"><p class="message-text"><%= msg.body %></p><div class="right"></div></div>');
+textNum = $('.right').last().siblings('p').html().length;
+  console.log(textNum);
+  if (textNum >= 40) {
+    $('.right').last().siblings('p').css('margin-left', '0px');
+    console.log($('.right').last().siblings('p').css('margin-left'));
+  }
+  else {
+    var diff = (40 - textNum)*2;
+    diff = diff.toString() + 'px';
+    console.log(diff);
+    $('.right').last().siblings('p').css('margin-left', diff);
+    console.log($('.right').last().siblings('p').css('margin-left'));
+  };
+<% end %>
 <% end %>
 $('#<%= @conversation.id %>').children('.popup-messages').children('.message-content').scrollTop($('#<%= @conversation.id %>').children('.popup-messages').children('.message-content').prop("scrollHeight") - 210);
 }
+
+
+
+$('#<%= @conversation.id %>').children('.popup-messages').children('.message-content').scrollTop($('#<%= @conversation.id %>').children('.popup-messages').children('.message-content').prop("scrollHeight") - 210);

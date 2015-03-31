@@ -1,3 +1,29 @@
-$('#<%= @message.conversation.id %>').children('.popup-messages').children('.message-content').append('<img src="/assets/profile.png"><p class="message-text"><%= @message.body %></p>');
+<% if current_user.id != @message.sender_id %>
+
+$('#<%= @message.conversation.id %>').children('.popup-messages').children('.message-content').append('<div class="message-wrapper"><div class="left"></div><p class="message-text"><%= @message.body %></p></div>');
 $('#<%= @message.conversation.id %>').children('.popup-messages').children('form').children('.text-field').val("");
-$('#<%= @message.conversation.id %>').children('.popup-messages').children('.message-content').scrollTop($('#<%= @message.conversation.id %>').children('.popup-messages').children('.message-content').prop("scrollHeight") - 210); 
+$('#<%= @message.conversation.id %>').children('.popup-messages').children('.message-content').scrollTop($('#<%= @message.conversation.id %>').children('.popup-messages').children('.message-content').prop("scrollHeight") - 210);
+
+<% else %>
+
+
+$('#<%= @message.conversation.id %>').children('.popup-messages').children('.message-content').append('<div class="message-wrapper"><p class="message-text"><%= @message.body %></p><div class="right"></div></div>');
+$('#<%= @message.conversation.id %>').children('.popup-messages').children('form').children('.text-field').val("");
+$('#<%= @message.conversation.id %>').children('.popup-messages').children('.message-content').scrollTop($('#<%= @message.conversation.id %>').children('.popup-messages').children('.message-content').prop("scrollHeight") - 210);
+
+
+
+<% end %>
+var textNum = $('.right').last().siblings('p').html().length;
+   console.log(textNum);
+   if (textNum >= 40) {
+     $('.right').last().siblings('p').css('margin-left', '0px');
+     console.log($('.right').last().siblings('p').css('margin-left'));
+   }
+   else {
+     var diff = (40 - textNum)*2;
+     diff = diff.toString() + 'px';
+     console.log(diff);
+     $('.right').last().siblings('p').css('margin-left', diff);
+     console.log($('.right').last().siblings('p').css('margin-left'));
+   };
