@@ -200,7 +200,7 @@
 
 <script>
 $(function() {
-  var pusher = new Pusher('42b5fd3755f8e9edc491');
+  var pusher = new Pusher('f74ddd7f3eae987007b6');
   var channelName = 'private-conversation.' + '<%= current_user ? current_user.id.to_s : 'null' %>';
   var channel = pusher.subscribe(channelName);
 
